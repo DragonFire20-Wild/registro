@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro Escape Room</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.form-container {
+  max-width: 450px;
+  width: 90%;
+  padding: 25px;
+  background: #000;
+  border: 2px solid #EC7C26;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #fff;
+  text-align: center;
+}
+
+.form-container h2 {
+  color: #EC7C26;
+  margin-bottom: 20px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #EC7C26;
+  background: #111;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.form-container button {
+  width: 80%;
+  padding: 15px;
+  background: #EC7C26;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: background 0.3s ease;
+}
+
+.form-container button:hover {
+  background: #ff9933;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+  <h2>Registro Escape Room</h2>
+
+  <form id="registroForm">
+    <input type="text" id="regNombre" placeholder="Nombre completo" required>
+    <input type="email" id="regCorreo" placeholder="Correo electrónico" required>
+
+    <div class="button-wrapper">
+      <button type="submit">Enviar Registro</button>
+    </div>
+  </form>
+</div>
+
+<script>
+document.getElementById('registroForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const nombre = document.getElementById('regNombre').value;
+  const correo = document.getElementById('regCorreo').value;
+
+  const asunto = encodeURIComponent("Nuevo Registro Escape Room");
+  const cuerpo = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${correo}`);
+
+  const miCorreo = "saray.medgon@educa.jcyl.es";
+  const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${miCorreo}&su=${asunto}&body=${cuerpo}`;
+
+  window.open(url, "_blank");
+
+});
+</script>
+
+</body>
+</html>
